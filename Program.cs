@@ -4,17 +4,23 @@ namespace project_21_11_24
 {
     internal class Program
     {
-        delegate int Cube(int x);
+        delegate bool CheckDay(int day);
         static void Main()
         {
             Console.ForegroundColor = ConsoleColor.DarkRed;
             try
             {
-                Cube myNumber = delegate(int x)
+                Console.WriteLine("Enter the number of day in year: ");
+                int day = int.Parse(Console.ReadLine() ?? "");
+                CheckDay checkDay = delegate (int day)
                 {
-                    return x * x * x;
+                    if (day == 256)
+                    {
+                        return true;
+                    }
+                    return false;
                 };
-                Console.WriteLine(myNumber(3));
+                Console.WriteLine(checkDay(day));
             }
             catch (Exception e)
             {
